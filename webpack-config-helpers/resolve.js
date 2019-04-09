@@ -1,12 +1,11 @@
-module.exports = () => {
-  return {
-    extensions: [
-      ".js",
-      ".jsx",
-      ".json"
-    ],
-    modules: [
-      'node_modules'
-    ]
-  }
-}
+module.exports = () => ({
+  extensions: [
+    '.js',
+    '.jsx',
+    '.json',
+  ],
+  modules: [
+    'node_modules',
+  ],
+});
+

@@ -1,14 +1,12 @@
-import Server from './../../src/server';
+import { app } from '../../server';
 
 let didRunAlready = false;
 
 export const compilerData = (compilation) => {
-  const filename = 'index.js' //'index.js';
-  let source = compilation.assets[filename].source();
-  const appEntry = source;
-  const { startSSR, app } = Server;
-  
-  console.log(startSSR, app )
+  const filename = 'index.js'; // 'index.js';
+  const source = compilation.assets[filename].source();
+
+  console.log(app);
   if (!didRunAlready) {
     didRunAlready = true;
     // startSSR({ appEntry });
@@ -25,22 +23,19 @@ export const compilerData = (compilation) => {
     });
   })
   */
-}
+};
 
 class ServerPlugin {
   constructor(options) {
     this.options = options;
-    console.log('[=ServerPlugin=]');
-    //  this.listener = app.listen(4000);
-  }
-
-  apply(compiler) {
-    compiler.hooks.emit.tapAsync('done', (compilation, callback) => {
-      const name = 'server-Bundle';
-      callback();
-      compilerData(compilation);
-    });
+    this.apply = (compiler) => {
+      compiler.hooks.emit.tapAsync('done', (compilation, callback) => {
+        const name = 'server-Bundle';
+        callback();
+        compilerData(compilation);
+      });
+    };
   }
 }
 
-module.exports = ServerPlugin;
+export default ServerPlugin;

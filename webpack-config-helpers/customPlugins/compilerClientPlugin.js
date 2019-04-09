@@ -1,41 +1,33 @@
-// import webpackDevMiddleware from 'webpack-dev-middleware/lib/middleware';
-import Server from './../../server';
+import { app } from '../../server';
 
-let didRunAlready = false;
-const addListener = (compilation) => {
-  const { app } = Server;
-  if (!didRunAlready) {
-    app.get('*', (request, response, next) => {
-      const { url } = request;
-      if (url.indexOf('build/client') > -1) {
-        response
-          .status(200)
-          .send('function me(){console.log("DAB");}');
-        return;
-      } else {
-        next();
-      }
-    });
-  }
-  didRunAlready = true;
-}
+export const addListener = (compilation) => {
+  const filename = 'index.js'; // 'index.js';
+  const source = compilation.assets[filename].source();
+
+  console.log(source);
+  app.get('*', (request, response, next) => {
+    const { url } = request;
+    if (url.indexOf('build/client') > -1) {
+      response
+        .status(200)
+        .send('function me(){console.log("DAB");}');
+    } else {
+      next();
+    }
+  });
+};
+
 
 class CompilerClientPlugin {
   constructor(options) {
     this.options = options;
-  }
-
-  apply(compiler) {
-    compiler.hooks.emit.tapAsync('afterCompile', (compilation, callback) => {
-      callback();
-      log({
-        title: 'client',
-        level: 'info',
-        message: 'Building new bundle...'
+    this.apply = (compiler) => {
+      compiler.hooks.emit.tapAsync('afterCompile', (compilation, callback) => {
+        addListener(compilation);
+        callback();
       });
-      addListener(compilation);
-    });
+    };
   }
 }
 
-module.exports = CompilerClientPlugin;
+export default CompilerClientPlugin;

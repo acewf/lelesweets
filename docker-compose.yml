@@ -9,12 +9,12 @@ services:
       - 3000
     environment: 
       NODE_ENV: production
-      VIRTUAL_HOST: lelesweets.london
+      VIRTUAL_HOST: lelesweets.london, www.lelesweets.london
       VIRTUAL_PORT: 3000
       LETSENCRYPT_HOST: lelesweets.london
       LETSENCRYPT_EMAIL: info@lelesweets.london
     restart: always
-    command: ["npm", "run", "start"]
+    command: ["npm", "run", "start:server"]
 
 networks:
   default:

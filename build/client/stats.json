@@ -1,0 +1,8 @@
+{
+  "assetsByChunkName": {
+    "index": [
+      "bundle.js",
+      "bundle.js.map"
+    ]
+  }
+}
