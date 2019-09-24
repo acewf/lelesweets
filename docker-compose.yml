@@ -6,15 +6,15 @@ services:
       context: ./
       dockerfile: Dockerfile
     expose:
-      - 3000
+      - 9000
     environment: 
       NODE_ENV: production
       VIRTUAL_HOST: lelesweets.london
-      VIRTUAL_PORT: 3000
+      VIRTUAL_PORT: 9000
       LETSENCRYPT_HOST: lelesweets.london
       LETSENCRYPT_EMAIL: info@lelesweets.london
     restart: always
-    command: ["npm", "run", "start"]
+    command: ["npm", "run", "deploy:serve"]
 
 networks:
   default:
