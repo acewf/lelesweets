@@ -76,7 +76,6 @@ const start = async () => {
 
   let secondHash = await request(options);
 
-  // console.log(user.edge_owner_to_timeline_media.edges)
 
   const edgesList = [
     ...user.edge_owner_to_timeline_media.edges,

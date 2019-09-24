@@ -5,7 +5,6 @@ import Header from "../Header"
 
 const Layout = ({ children, pageContext: { data } }) => {
   const { info } = data;
-  console.log('info:>>', info);
   return (
     <>
       <Header
