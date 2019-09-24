@@ -14,7 +14,7 @@ services:
       LETSENCRYPT_HOST: lelesweets.london
       LETSENCRYPT_EMAIL: info@lelesweets.london
     restart: always
-    command: ["npm", "run", "deploy:serve"]
+    command: ["npm", "run", "serve"]
 
 networks:
   default:
