@@ -1,0 +1,13 @@
+{
+  "logoHeader": "../images/lelesweets.svg",
+  "logoTitle": "Lelesweets",
+  "email": "lelesweets@gmail.com",
+  "about": {
+    "title": "About Lelesweets",
+    "description": "BlahBlah"
+  },
+  "homepage": {
+    "title": "Welcome to Lelesweets",
+    "description": "Here you can find a bit of love in every sweet.."
+  }
+}
