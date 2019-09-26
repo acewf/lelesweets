@@ -55,7 +55,7 @@
     "develop": "gatsby develop",
     "dev": "gatsby develop",
     "build": "gatsby build",
-    "serve": "gatsby serve",
+    "serve": "gatsby serve --port 3000",
     "deploy": "gatsby build --prefix-paths && gh-pages -d public",
     "deploy:serve": "npm run build && npm run serve",
     "cy:open": "cypress open",
