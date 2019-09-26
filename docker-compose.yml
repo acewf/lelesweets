@@ -6,13 +6,13 @@ services:
       context: ./
       dockerfile: Dockerfile
     expose:
-      - 9000
+      - 3000
     environment: 
       NODE_ENV: production
-      VIRTUAL_HOST: lelesweets.london
-      VIRTUAL_PORT: 9000
-      LETSENCRYPT_HOST: lelesweets.london
-      LETSENCRYPT_EMAIL: info@lelesweets.london
+      VIRTUAL_HOST: lelesweets.co.uk
+      VIRTUAL_PORT: 3000
+      LETSENCRYPT_HOST: lelesweets.co.uk
+      LETSENCRYPT_EMAIL: info@lelesweets.co.uk
     restart: always
     command: ["npm", "run", "serve"]
 
