@@ -1,8 +1,9 @@
 import React, { useState } from "react"
 import PropTypes from "prop-types"
-import { Link } from "gatsby"
+import { Link as BaseLink } from "gatsby"
 import styled from '@emotion/styled'
 
+import { Grid } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -14,53 +15,54 @@ import Typography from '@material-ui/core/Typography';
 
 const styles = {
   media: {
-    height: 140,
+    height: 220,
   },
 };
 
 const StyledLi = styled.li`
-  width: 30%;
   padding: 10px;
   display: flex;
   flex: 1 1 auto;
 `;
 
+const Link = styled(BaseLink)`
+  text-decoration:none;
+`;
+
 const Post = ({ post, classes, key }) => {
   const { shortcode, img, id } = post;
-  const [hover, setHover] = useState(false);
+  const { media } = classes;
   //const { smallImage, likes, id } = post;
   // const { small } = smallImage.childImageSharp;
   return (
-    <StyledLi key={key}>
-      <Link to={`/${id}/`}>
+    <Grid item xs={12} sm={6} md={4}>
+      <StyledLi key={key}>
         <Card className={classes.card}>
           <CardActionArea>
-            <CardMedia
-              className={classes.media}
-              image={img.src}
-              title="Contemplative Reptile"
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="h2">
-                Lizard
-          </Typography>
-              <Typography component="p">
-                Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                across all continents except Antarctica
-          </Typography>
-            </CardContent>
+            <Link to={`/${id}/`}>
+              <CardMedia
+                className={classes.media}
+                image={img.src}
+                title="Contemplative Reptile"
+              />
+              <CardContent>
+                <Typography gutterBottom
+                  variant="h5" component="h2"
+                  color="primary">Cake Cake</Typography>
+                <Typography component="p" color="primary">
+                  Lemon drops gummi bears halvah. Dessert marshmallow gummies croissant.
+                  Gummies marzipan cupcake oat cake fruitcake ice cream.
+                </Typography>
+              </CardContent>
+            </Link>
           </CardActionArea>
           <CardActions>
-            <Button size="small" color="primary">
-              Share
-        </Button>
-            <Button size="small" color="primary">
-              Learn More
-        </Button>
+            <Button size="small" color="primary">Share</Button>
+            <Button size="small" color="primary">More Info</Button>
           </CardActions>
         </Card>
-      </Link>
-    </StyledLi>
+      </StyledLi>
+    </Grid>
   );
 }
 

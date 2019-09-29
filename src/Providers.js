@@ -8,6 +8,7 @@ import { ThemeProvider as MaterialProvider } from '@material-ui/styles';
 import createStore from './state/createStore';
 import GlobalStyles from './components/GlobalStyles';
 
+
 const Providers = ({ children }) => {
   const store = createStore();
 

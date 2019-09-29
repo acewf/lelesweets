@@ -9,6 +9,7 @@ const GlobalStyles = ({ theme: { fonts } }) => (
       ${emotionNormalize}
       body {
         margin:0;
+        background:#E1E2E1;
       }
     `}
   />
