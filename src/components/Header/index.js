@@ -58,9 +58,10 @@ const Header = ({ siteTitle, logo }) => {
 
   const trigger = useScrollTrigger({
     disableHysteresis: true,
-    threshold: 100,
-    target: window ? window : undefined,
+    threshold: 100
   });
+
+  console.log(trigger)
 
   return (
     <HeaderContainer>
