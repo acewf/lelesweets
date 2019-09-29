@@ -1,4 +1,4 @@
-FROM node:9.2.0-alpine
+FROM node:10.12.0-alpine
 
 ENV WORKDIR /usr/src/app
 WORKDIR $WORKDIR
@@ -27,5 +27,5 @@ RUN apk add vips-tools vips-dev fftw-dev build-base --update-cache \
 
 COPY .npmrc package.json package-lock.json ./
 COPY . .
-RUN npm install
-CMD npm run deploy:serve
+RUN npm install --no-audit
+RUN npm run build
