@@ -9,7 +9,7 @@ services:
       - 3000
     environment: 
       NODE_ENV: production
-      VIRTUAL_HOST: lelesweets.co.uk
+      VIRTUAL_HOST: lelesweets.co.uk, www.lelesweets.co.uk
       VIRTUAL_PORT: 3000
       LETSENCRYPT_HOST: lelesweets.co.uk
       LETSENCRYPT_EMAIL: info@lelesweets.co.uk
