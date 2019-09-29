@@ -10,7 +10,7 @@ exports.createPages = async ({ graphql, actions }) => {
   GraphQl = graphql;
 
   const data = await querys['/'](graphql);
-  const postTemplate = path.resolve(`src/templates/post-page.js`)
+  const postTemplate = path.resolve(`src/templates/post-page.js`);
   _.each(data.allPosts, edge => {
     const edgeData = {
       info: data.info,

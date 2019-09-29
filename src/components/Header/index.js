@@ -1,8 +1,13 @@
+import React, { useState } from "react"
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
-import React from "react"
 import ReactSVG from "react-svg"
 import styled from '@emotion/styled';
+
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 
 const Logo = styled(ReactSVG)`
   height: 100px;
@@ -19,8 +24,6 @@ const Logo = styled(ReactSVG)`
 
 const HeaderContainer = styled.header`
   background:black;
-  margin-bottom:1.45rem;
-  padding: 1.45rem 1.0876rem;
 `;
 
 const Flex = styled.div`
@@ -46,34 +49,59 @@ const PagesMenu = styled.div`
 `;
 
 
-const PageLink = styled(Link)`
-  color: white;
-  text-decoration: none;
-  margin-right: 20px;
-`
+const Header = ({ siteTitle, logo }) => {
+  const [value, setValue] = useState(0);
 
-const Header = ({ siteTitle, logo }) => (
-  <HeaderContainer>
-    <Flex>
-      <Logo src={logo} />
-      <Heading>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </Heading>
-    </Flex>
-    <PagesMenu>
-      <PageLink to="/">Products</PageLink>
-      <PageLink to="/about">About</PageLink>
-    </PagesMenu>
-  </HeaderContainer>
-)
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
+  const trigger = useScrollTrigger({
+    disableHysteresis: true,
+    threshold: 100,
+    target: window ? window : undefined,
+  });
+
+  return (
+    <HeaderContainer>
+      <Flex>
+        <Logo src={logo} />
+        <Heading>
+          <Link
+            to="/"
+            style={{
+              color: `white`,
+              textDecoration: `none`,
+            }}
+          >
+            {siteTitle}
+          </Link>
+        </Heading>
+      </Flex>
+      <PagesMenu>
+        <AppBar position={trigger ? 'fixed' : 'static'}>
+          <Tabs
+            variant="fullWidth"
+            value={value}
+            onChange={handleChange}
+            aria-label="nav tabs example"
+          >
+            <Tab
+              component={Link}
+              label="Products"
+              to="/"
+            />
+            <Tab
+              component={Link}
+              label="About"
+              to="/about"
+            />
+          </Tabs>
+        </AppBar>
+      </PagesMenu>
+    </HeaderContainer>
+  )
+}
 
 Header.propTypes = {
   siteTitle: PropTypes.string,

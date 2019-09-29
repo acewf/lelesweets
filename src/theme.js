@@ -8,17 +8,34 @@ export const theme = {
 export const MaterialTheme = createMuiTheme({
   palette: {
     primary: {
-      main: '#556cd6',
+      main: '#000000',
+      dark: '#000000',
+      light: '#2c2c2c'
     },
     secondary: {
-      main: '#19857b',
+      main: '#e2ba2c',
+      dark: '#ac8a00',
+      light: '#ffec61'
     },
     error: {
       main: red.A400,
     },
     background: {
-      default: '#fff',
+      default: '#000',
     },
+  },
+  typography: {
+    fontFamily: [
+      '-apple-system',
+      'BlinkMacSystemFont',
+      '"Segoe UI"',
+      'Roboto',
+      'Arial',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(','),
   },
 });
 

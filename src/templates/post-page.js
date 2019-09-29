@@ -5,6 +5,7 @@ import * as PropTypes from "prop-types"
 
 const PostTemplate = ({ pageContext: { data } }) => {
 
+  console.log('Data:', data);
   return (
     <div></div>
   )
