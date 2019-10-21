@@ -10,6 +10,10 @@ const GlobalStyles = ({ theme: { fonts } }) => (
       body {
         margin:0;
         background:#E1E2E1;
+
+        #___gatsby{
+          overflow-y: scroll;
+        }
       }
     `}
   />

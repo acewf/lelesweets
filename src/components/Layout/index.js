@@ -16,7 +16,6 @@ const Layout = ({ children, pageContext: { data } }) => {
       <div
         style={{
           margin: `0 auto`,
-          maxWidth: 960,
           paddingTop: 0,
         }}
       >
