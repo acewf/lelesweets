@@ -28,6 +28,12 @@ module.exports = {
         path: `${__dirname}/data`
       }
     },
-    'gatsby-transformer-json'
+    'gatsby-transformer-json',
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: "UA-151896327-1",
+      }
+    }
   ],
 }
