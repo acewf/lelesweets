@@ -61,8 +61,6 @@ const Header = ({ siteTitle, logo }) => {
     threshold: 100
   });
 
-  console.log(trigger)
-
   return (
     <HeaderContainer>
       <Flex>

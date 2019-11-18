@@ -1,4 +1,5 @@
 import React from "react"
+import { graphql } from 'gatsby';
 import SEO from "../components/seo"
 
 const AboutPage = ({ pageContext: { data: { info } } }) => {
@@ -11,5 +12,32 @@ const AboutPage = ({ pageContext: { data: { info } } }) => {
     </>
   )
 }
+
+export const query = graphql`
+  query {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+    infoJson{
+      email
+      logoTitle
+      logoHeader{
+        publicURL
+      }
+      about{
+        title
+        description
+      }
+    }
+    dataJson{
+      biography
+      followers{
+        count
+      }
+    }
+  }
+`
 
 export default AboutPage

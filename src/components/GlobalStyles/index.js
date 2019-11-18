@@ -7,12 +7,18 @@ const GlobalStyles = ({ theme: { fonts } }) => (
   <Global
     styles={css`
       ${emotionNormalize}
+      html, body{
+        height:100%;
+      }
       body {
         margin:0;
         background:#E1E2E1;
 
         #___gatsby{
           overflow-y: scroll;
+        }
+        #gatsby-focus-wrapper, #___gatsby{
+          height:100%;
         }
       }
     `}

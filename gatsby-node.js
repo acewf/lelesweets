@@ -1,46 +1,36 @@
 const _ = require(`lodash`)
 const path = require(`path`)
-const slug = require(`slug`)
-const slash = require(`slash`)
-const querys = require('./querys');
+const slug = require(`slug`);
 
-let GraphQl;
+const querys = {
+  postPage: async (graphql) => {
+    return await graphql(`
+      query {
+        allPostsJson(limit: 100) {
+          nodes {
+            id
+          }
+        }
+      }
+    `)
+  }
+};
+
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   GraphQl = graphql;
 
-  const data = await querys['/'](graphql);
+  const { data } = await querys['postPage'](graphql);
   const postTemplate = path.resolve(`src/templates/post-page.js`);
-  _.each(data.allPosts, edge => {
-    const edgeData = {
-      info: data.info,
-      site: data.site,
-      post: edge
-    }
+  const { allPostsJson } = data;
+
+  _.each(allPostsJson.nodes, ({ id }) => {
     createPage({
-      path: `/${slug(edge.id)}/`,
+      path: `/${slug(id)}/`,
       component: postTemplate,
       context: {
-        data: edgeData
+        postID: id
       },
     })
   })
-}
-
-exports.onCreatePage = async ({
-  page,
-  actions: { createPage, deletePage, createRedirect }
-}) => {
-  deletePage(page);
-  let data;
-  if (querys[page.path]) {
-    data = await querys[page.path](GraphQl);
-  }
-
-  createPage({
-    ...page,
-    context: {
-      data
-    }
-  });
 }

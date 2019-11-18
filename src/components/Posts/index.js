@@ -1,9 +1,8 @@
 import React, { useState } from "react"
-import PropTypes from "prop-types"
+import PropTypes from "prop-types";
 import styled from '@emotion/styled'
 import { Grid } from '@material-ui/core';
 import Post from "./post"
-
 
 const StyledUl = styled.ul`
   list-style: none;
