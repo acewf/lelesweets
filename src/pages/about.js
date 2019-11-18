@@ -2,8 +2,8 @@ import React from "react"
 import { graphql } from 'gatsby';
 import SEO from "../components/seo"
 
-const AboutPage = ({ pageContext: { data: { info } } }) => {
-  const { logoTitle, biography } = info;
+const AboutPage = ({ data: { infoJson } }) => {
+  const { logoTitle, biography } = infoJson;
   return (
     <>
       <SEO title={`About`} keywords={[`gatsby`, `application`, `react`]} />
