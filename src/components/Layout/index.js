@@ -1,29 +1,40 @@
 import React from "react"
 import PropTypes from "prop-types"
+import styled from '@emotion/styled';
 
 import Header from "../Header"
+import Footer from "../Footer"
 
 //#E1E2E1
 
+const Wrapper = styled.div`
+  padding-top:0;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100% - 148px);
+`
 
-const Layout = ({ children, pageContext: { data } }) => {
-  const { info } = data;
+const Main = styled.main`
+  display:flex;
+  flex:1 1 auto;
+  flex-direction:column;
+`
+
+const Layout = ({ children }) => {
+  const { props } = children;
+  const { data: { infoJson } } = props;
   return (
     <>
       <Header
-        siteTitle={data.info.logoTitle}
-        logo={data.info.logoHeader} />
-      <div
-        style={{
-          margin: `0 auto`,
-          paddingTop: 0,
-        }}
-      >
-        <main>{children}</main>
-        <footer>
-          contacts: {info.email}
-        </footer>
-      </div>
+        siteTitle={infoJson.logoTitle}
+        logo={infoJson.logoHeader.publicURL} />
+      <Wrapper>
+        <Main>{children}</Main>
+        <Footer>
+          contacts: {infoJson.email}
+        </Footer>
+      </Wrapper>
     </>
   )
 }

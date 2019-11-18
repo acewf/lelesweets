@@ -34,17 +34,17 @@ const CardMedia = styled(Img)`
 `;
 
 const Post = ({ post, classes, key }) => {
-  const { shortcode, img, id } = post;
+  const { shortcode, display_url, id } = post;
   const { media } = classes;
-  //const { smallImage, likes, id } = post;
-  // const { small } = smallImage.childImageSharp;
+  const { fluid } = display_url.childImageSharp;
+
   return (
     <Grid item xs={12} sm={6} md={4}>
       <StyledLi key={key}>
         <Card className={classes.card}>
           <CardActionArea>
             <Link to={`/${id}/`}>
-              <CardMedia fluid={img} />
+              <CardMedia fluid={fluid} />
               <CardContent>
                 <Typography gutterBottom
                   variant="h5" component="h2"

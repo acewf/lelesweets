@@ -1,4 +1,5 @@
 import React from "react"
+import { graphql } from 'gatsby';
 import styled from '@emotion/styled'
 import { Typography } from '@material-ui/core';
 import SEO from "../components/seo"
@@ -12,8 +13,10 @@ const Wrapper = styled.div`
   overflow:hidden;
 `;
 
-const IndexPage = ({ pageContext: { data } }) => {
-  const { info: { homepage }, allPosts } = data;
+const IndexPage = ({ data }) => {
+  const { infoJson: { homepage }, allPostsJson: { nodes } } = data;
+
+  console.log(homepage.description)
   return (
     <>
       <SEO title={`Home${varible}`} keywords={[`gatsby`, `application`, `react`]} />
@@ -21,13 +24,69 @@ const IndexPage = ({ pageContext: { data } }) => {
         <Typography variant="h3" align="center" component="h1">
           {homepage.title}
         </Typography>
-        <Typography align="center" component="paragraph">
+        <Typography align="center">
           {homepage.description}
         </Typography>
-        <Posts allPosts={allPosts} />
+        <Posts allPosts={nodes} />
       </Wrapper>
     </>
   )
 }
+
+export const query = graphql`
+  query {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+    allPostsJson(limit: 100) {
+      nodes {
+        id
+        display_url{
+          childImageSharp{
+            fluid{
+              src
+              srcSet
+              sizes
+              aspectRatio
+              srcWebp
+              srcSetWebp
+              base64
+            }
+          }
+        }
+        likes
+        shortcode
+        dimensions{
+          height
+          width
+        }
+        type
+      }
+    }
+    infoJson{
+      email
+      logoTitle
+      logoHeader{
+        publicURL
+      }
+      about{
+        title
+        description
+      }
+      homepage{
+        title
+        description
+      }
+    }
+    dataJson{
+      biography
+      followers{
+        count
+      }
+    }
+  }
+`
 
 export default IndexPage
