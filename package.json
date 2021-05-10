@@ -30,7 +30,7 @@
     "gatsby-transformer-sharp": "^2.3.5",
     "glamor": "^2.20.40",
     "instagram-screen-scrape": "^2.0.0",
-    "lodash": "4.17.13",
+    "lodash": "4.17.21",
     "mkdirp": "0.5.1",
     "mousetrap": "^1.6.0",
     "progress": "2.0.3",
